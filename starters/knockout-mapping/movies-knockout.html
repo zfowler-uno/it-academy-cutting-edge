@@ -10,13 +10,16 @@
 	<input data-bind="value: movie_title">
   </div>
   <button data-bind="click: loadUserData">Click me</button>
-  <button data-bind="click: saveUserData">Save me</button>
+  <!--<button data-bind="click: saveUserData">Save me</button>-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src='knockout-2.1.0.js'></script>
   <script src='mapping.js'></script>
   <script>
 	
-  $.getJSON("karate-kid.json", function(data) {
+  // Load data from JSON file
+      $.getJSON("karate-kid.json", function(data) {
+
+          // Subsequently, set up the VM
     var viewModel = ko.mapping.fromJS(data);
 	viewModel.loadUserData = function() {
 		$.getJSON("karate-kid.json", function(data) {
@@ -25,9 +28,8 @@
 }
 	viewModel.saveUserData = function() { 
 		var data_to_send = {data: ko.toJSON(viewModel)};
-		console.log(data_to_send.data);
-		
-		$.post("http://testing.atticdev.ist.unomaha.edu/z/movie_app/movies/1.json", data_to_send.data.movie, function(data) {
+
+		$.post("save-movie.json", data_to_send, function(data) {
 			alert("Your data has been posted to the server!");
 		});
 	}
