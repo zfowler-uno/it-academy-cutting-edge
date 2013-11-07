@@ -7,6 +7,7 @@ angular.module('myApp.controllers', []).
   controller('MovieList', ['$scope','$http',
         function MovieList($scope, $http) {
             // Here is where JSON pull goes.
+            // Hint: url is 'movies/movies.json.js'
             // $http.get().success(function(data){});
         $scope.movies = [
             {movieId: 1, movie_title: "Movie1" , synopsis: "This was a great movie"},
