@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout - Movie</title>
+</head>
+<body>
+<h1>Movie</h1>
+<div class="title" data-bind="text: title"></div>
+<ul data-bind="foreach: reviews">
+    <li><span data-bind="text:$data.name"></span> says, <span data-bind="text:$data.comment"></span></li>
+</ul>
+
+<script src="lib/knockout-3.0.0.js"></script>
+<script>
+
+    var MovieReview = function(name, rating, comment) {
+        this.name = ko.observable(name);
+        this.rating = ko.observable(rating);
+        this.comment = ko.observable(comment);
+    }
+    // Here's my data model
+    var MovieViewModel = function() {
+        this.title = ko.observable("Karate Kid");
+
+        this.reviews = ko.observableArray([
+            new MovieReview("John",5,"This was the best movie ever!"),
+            new MovieReview("Sally",2,"I really didn't like this movie.")
+        ])
+
+    };
+
+
+
+    vm = new MovieViewModel();
+    ko.applyBindings(vm); // This makes Knockout get to work
+</script>
+</body>
+</html>
