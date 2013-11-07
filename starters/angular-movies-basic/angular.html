@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="movies.js"></script>
+</head>
+<body>
+<h2>Movies</h2>
+<div ng-controller="MovieCtrl">
+    <ul class="unstyled">
+        <li ng-repeat="movie in movies">
+            <span>{{movie.movie_title}}</span>
+        </li>
+    </ul>
+    
+</div>
+</body>
+</html>
